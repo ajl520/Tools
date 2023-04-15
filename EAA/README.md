@@ -11,5 +11,12 @@ wget https://raw.githubusercontent.com/ajl520/Tools/main/EAA/install-init-config
 
 
 
+### Configure trojan
 
+##### https://github.com/Jrohy/trojan
+
+##### Run:
+```
+source <(curl -sL https://git.io/trojan-install)
+```
 
