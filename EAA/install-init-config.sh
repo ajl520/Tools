@@ -3,8 +3,11 @@
 # Update package
 sudo apt-get update
 
-# Configure SSH port
-sed -i 's/#Port 22/Port 65432/g' /etc/ssh/sshd_config
+# Change the SSH port to 65432
+sudo sed -i 's/#Port 22/Port 65432/g' /etc/ssh/sshd_config
+
+# Restart the SSH service
+sudo systemctl restart sshd
 
 # Install Google BBR and enable it
 sudo modprobe tcp_bbr
