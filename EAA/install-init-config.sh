@@ -1,38 +1,9 @@
 #!/bin/bash
 
-port_number=""
-while getopts ":p:" opt; do
-  case ${opt} in
-    p )
-      port_number=${OPTARG}
-      ;;
-    \? )
-      echo "Invalid option: -$OPTARG" 1>&2
-      exit 1
-      ;;
-    : )
-      echo "Option -$OPTARG requires an argument." 1>&2
-      exit 1
-      ;;
-  esac
-done
-
-if [[ -z $port_number ]]; then
-    echo "Please specify the port number to map using the -p option."
-    exit 1
-fi
-
 # Update package list and upgrade packages
-sudo apt-get update && sudo apt-get upgrade -y
+sudo apt-get update
 
-# Install necessary packages
-sudo apt-get install -y curl iptables-persistent
-
-# Enable port forwarding and configure iptables to forward port 22 to the specified port number
-sudo sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
-sudo sysctl -p
-sudo iptables -t nat -A PREROUTING -p tcp --dport 22 -j REDIRECT --to-port $port_number
-sudo iptables-save | sudo tee /etc/iptables/rules.v4
+sed -i 's/#Port 22/Port 65432/g' /etc/ssh/sshd_config
 
 # Install Google BBR and enable it
 sudo modprobe tcp_bbr
