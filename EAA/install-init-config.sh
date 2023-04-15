@@ -23,3 +23,10 @@ lsmod | grep bbr
 # Output success messages
 echo "Port forwarding from port 22 to port 65432 has been configured successfully."
 echo "Google BBR has been enabled successfully."
+
+# Delay of 10s
+echo "Restarting......."
+sleep 10s
+
+# reboot
+sudo reboot
