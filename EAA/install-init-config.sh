@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Update package list and upgrade packages
+# Update package
 sudo apt-get update
 
+# Configure SSH port
 sed -i 's/#Port 22/Port 65432/g' /etc/ssh/sshd_config
 
 # Install Google BBR and enable it
@@ -17,5 +18,5 @@ echo "BBR status:"
 lsmod | grep bbr
 
 # Output success messages
-echo "Port forwarding from port 22 to port $port_number has been configured successfully."
+echo "Port forwarding from port 22 to port 65432 has been configured successfully."
 echo "Google BBR has been enabled successfully."
