@@ -18,6 +18,7 @@ sudo sysctl -p
 
 # Check if BBR is enabled
 echo "BBR status:"
+sysctl net.ipv4.tcp_available_congestion_control
 lsmod | grep bbr
 
 # Output success messages
