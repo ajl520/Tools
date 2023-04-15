@@ -9,16 +9,16 @@ sudo sed -i 's/#Port 22/Port 65432/g' /etc/ssh/sshd_config
 # Restart the SSH service
 sudo systemctl restart sshd
 
-# Check SSH port is enabled
-echo -e "\033[32mSSH port: \033[0m"
-grep "Port 65432" /etc/ssh/sshd_config
-
 # Install Google BBR and enable it
 sudo modprobe tcp_bbr
 echo "tcp_bbr" | sudo tee -a /etc/modules-load.d/modules.conf
 echo "net.core.default_qdisc=fq" | sudo tee -a /etc/sysctl.conf
 echo "net.ipv4.tcp_congestion_control=bbr" | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
+
+# Check SSH port is enabled
+echo -e "\033[32mSSH port: \033[0m"
+grep "Port 65432" /etc/ssh/sshd_config
 
 # Check if BBR is enabled
 echo -e "\033[32mBBR status: \033[0m"
