@@ -1,6 +1,6 @@
 
 
-### install-init-config.sh
+### configure_linux_template.sh
 
 ##### https://raw.githubusercontent.com/ajl520/Tools/main/Linux/configure_linux_template.sh
 
