@@ -21,6 +21,7 @@ sudo apt update
 
 echo -e "\033[32m软件源已成功配置为 $mirror_url for Ubuntu 22.04 Jammy! \033[0m"
 
+
 ## 设置时区
 
 sudo timedatectl set-timezone Asia/Shanghai
@@ -28,6 +29,7 @@ sudo timedatectl set-timezone Asia/Shanghai
 timedatectl status
 
 echo -e "\033[32m设置时区为 Asia/Shanghai \033[0m"
+
 
 ## 安装net-tools
 
@@ -56,3 +58,17 @@ sudo systemctl restart systemd-timesyncd
 sudo cat /etc/systemd/timesyncd.conf
 
 echo -e "\033[32mNTP已成功设置为 ntp.aliyun.com \033[0m"
+
+
+# 下载配置文件
+sudo wget -P /usr/local/bin/ https://eaa.d8e.cn/index/lab/config/Linux/staticip.sh
+
+sudo chmod +x /usr/local/bin/staticip.sh
+
+sudo wget -P /usr/local/bin/ https://eaa.d8e.cn/index/lab/config/Linux/hostchange.sh
+
+sudo chmod +x /usr/local/bin/hostchange.sh
+
+echo -e "\033[32mstaticip.sh & hostchange.sh 已下载！存储路径: \033[0m"
+echo -e "\033[32m/usr/local/bin/staticip.sh \033[0m"
+echo -e "\033[32m/usr/local/bin/hostchange.sh \033[0m"
